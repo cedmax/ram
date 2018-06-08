@@ -85,7 +85,7 @@ class CreateForm extends React.Component {
       const { name, type, dirname } = this.state
       const appType = appTypes[type]
       const { install } = appType
-      const args = [ ...install.split(' '), name ]
+      const args = [ ...install(name).split(' ') ]
       update(pushLog([ 'npx', ...args ].join(' ')))
       update(pushLog(''))
       const promise = run('npx', args, {
@@ -209,7 +209,7 @@ class CreateForm extends React.Component {
               h(Text, { fontSize: 1, my: 2 },
                 'This will run: ',
                 h(Code, { color: 'cyan' },
-                  [ 'npx', appType.install,  name].join(' ')
+                  [ 'npx', appType.install(name)].join(' ')
                 )
               ),
               pending && h(Text, { color: 'blue' }, 'Creating App...'),

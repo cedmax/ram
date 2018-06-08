@@ -13,7 +13,7 @@ const modes = {
 const appTypes = {
   react: {
     name: 'React App',
-    install: 'create-react-app',
+    install: (name) => `create-react-app ${name}`,
     defaults: {
       type: 'create-react-app',
       port: 3000,
@@ -22,7 +22,7 @@ const appTypes = {
   },
   next: {
     name: 'Next.js App',
-    install: 'create-next-app',
+    install: (name) => `create-next-app ${name}`,
     defaults: {
       type: 'create-next-app',
       port: 3000,
@@ -31,7 +31,7 @@ const appTypes = {
   },
   gatsby: {
     name: 'Gatsby App',
-    install: 'gatsby-cli new',
+    install: (name) => `gatsby-cli new ${name}`,
     defaults: {
       type: 'gatsby-cli',
       port: 8000,
@@ -40,7 +40,7 @@ const appTypes = {
   },
   razzle: {
     name: 'Razzle App',
-    install: 'create-razzle-app',
+    install: (name) => `create-razzle-app ${name}`,
     defaults: {
       type: 'create-razzle-app',
       port: 3000,
@@ -49,7 +49,7 @@ const appTypes = {
   },
   nuxt: {
     name: 'Vue App',
-    install: 'vue create -d',
+    install: (name) => `vue create -d ${name}`,
     defaults: {
       type: 'create-vue-app',
       port: 8080,
@@ -58,10 +58,19 @@ const appTypes = {
   },
   preact: {
     name: 'Preact App',
-    install: 'preact-cli create default',
+    install: (name) => `preact-cli create default ${name}`,
     defaults: {
       type: 'preact-cli',
       port: 8080,
+      run: 'run start'
+    }
+  },
+  reactStatic: {
+    name: 'React Static',
+    install: (name) => `react-static create --template=blank --name=${name}`,
+    defaults: {
+      type: 'react-static',
+      port: 3000,
       run: 'run start'
     }
   }
